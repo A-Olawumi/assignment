@@ -7,7 +7,7 @@ describe('jumia website page', () => {
 
 beforeEach(() => {
 
-    cy.visit('https://www.jumia.com')
+    cy.visit('https://www.jumia.com') 
  })
         
       it('search for a product', () => {
@@ -78,9 +78,11 @@ it ('Sign up', ()=>{
     cy.get('#dpdw-login-box > .inbox > .-pam > .btn').click()
     cy.get('main.-bg-wt > .-pvm').scrollIntoView()
     cy.get(':nth-child(2) > .col12 > ._prim').click({force:true})
-    cy.get('#fi-firstName').type('Name', {force:true})
-    cy.get('#fi-lastName').type('lastName', {force:true})
-       cy.get('#fi-phone').type('09054325689',{force:true})
+    cy.get('#fi-firstName').type('Name', {force:true}).should('include',"")
+    cy.get('#fi-firstName').type('Name', {force:true}).should('have.lengthof','30')
+    cy.get('#fi-lastName').type('lastName', {force:true}).should('include',"")
+       cy.get('#fi-phone').type('09054325689',{force:true}).should('include',"")
+       cy.get('#fi-phone').type('09054325689',{force:true}).should('have.lengthof','11')
        cy.get('.-ptl > .btn').click({force:true})
 })
 
@@ -89,8 +91,9 @@ it('login',() =>{
     cy.get('#dpdw-login-box > .inbox > .-pam > .btn').click()
     cy.get('main.-bg-wt > .-pvm').scrollIntoView()
     cy.get('#authForm > .-flupp').click({force:true})
-    cy.get('#fi-password').type('olawumi',{force:true})
-    cy.get('#fi-email').type('adedireolawumi@gmail,com',{force:true})
+    cy.get('#fi-password').type('olawumi',{force:true}).should('include',"")
+    cy.get('#fi-email').type('adedireolawumi@gmail,com',{force:true}).should('include',"")
+    cy.get('#fi-email').type('adedireolawumi@gmail,com',{force:true}).should('have.At Sign','@')
     cy.get('.-df > .fi-w > .lbl').click
     cy.get('#authForm > ._prim > span').click({force:true})
 })
